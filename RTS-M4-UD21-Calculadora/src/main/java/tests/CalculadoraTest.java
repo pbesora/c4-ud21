@@ -31,6 +31,10 @@ class CalculadoraTest {
 		assertEquals(currencies[1].getSimbolo(), '€');
 		assertEquals(currencies[1].toString(), ("Europe - Euro"));
 	}
-
+	
+	@Test
+	public void testllenarMonedas() {
+		assertEquals(calculator.getMonedas(), "[US - Dollar, Europe - Euro]");
+	}
 
 }
