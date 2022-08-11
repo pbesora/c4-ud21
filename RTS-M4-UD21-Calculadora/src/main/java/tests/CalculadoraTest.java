@@ -33,7 +33,7 @@ class CalculadoraTest {
 	}
 	
 	@Test
-	public void testGetterCalculadora() {
+	public void testGettersCalculadora() {
 		assertEquals(calculator.getValorOrigen(), 0.0);
 		assertEquals(calculator.getValorFinal(), calculator.getValorOrigen() * (calculator.getMonedaFinal().getValor() / calculator.getMonedaOrigen().getValor()));
 		assertEquals(calculator.getRatio(), (calculator.getMonedaFinal().getValor() / calculator.getMonedaOrigen().getValor()));
@@ -44,4 +44,25 @@ class CalculadoraTest {
 		assertEquals(calculator.getMonedaFinal(), calculator.getMonedas().get(1));
 	}
 
+	@Test
+	public void testSettersCalculadora() {
+		calculator.setValorOrigen(13.37);
+		assertEquals(calculator.getValorOrigen(), 13.37);
+		
+		calculator.setMonedaOrigen(new Moneda(0.0, "A", "B", "C", 'D'));
+		assertEquals(calculator.getMonedaOrigen().getValor(), 0.0);
+		assertEquals(calculator.getMonedaOrigen().getNombre(), "A");
+		assertEquals(calculator.getMonedaOrigen().getLugar(), "B");
+		assertEquals(calculator.getMonedaOrigen().getAbrev(), "C");
+		assertEquals(calculator.getMonedaOrigen().getSimbolo(), 'D');
+		assertEquals(calculator.getMonedaOrigen().toString(), ("B - A"));
+		
+		calculator.setMonedaFinal(new Moneda(10.0, "E", "F", "G", 'H'));
+		assertEquals(calculator.getMonedaFinal().getValor(), 10.0);
+		assertEquals(calculator.getMonedaFinal().getNombre(), "E");
+		assertEquals(calculator.getMonedaFinal().getLugar(), "F");
+		assertEquals(calculator.getMonedaFinal().getAbrev(), "G");
+		assertEquals(calculator.getMonedaFinal().getSimbolo(), 'H');
+		assertEquals(calculator.getMonedaFinal().toString(), ("F - E"));		
+	}	
 }
