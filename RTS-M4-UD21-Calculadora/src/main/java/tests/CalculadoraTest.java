@@ -33,8 +33,15 @@ class CalculadoraTest {
 	}
 	
 	@Test
-	public void testllenarMonedas() {
-		assertEquals(calculator.getMonedas(), "[US - Dollar, Europe - Euro]");
+	public void testGetterCalculadora() {
+		assertEquals(calculator.getValorOrigen(), 0.0);
+		assertEquals(calculator.getValorFinal(), calculator.getValorOrigen() * (calculator.getMonedaFinal().getValor() / calculator.getMonedaOrigen().getValor()));
+		assertEquals(calculator.getRatio(), (calculator.getMonedaFinal().getValor() / calculator.getMonedaOrigen().getValor()));
+		assertEquals(calculator.getMonedasString(), "[US - Dollar, Europe - Euro]");
+		
+		// Both coming tests also test the ArrayList <Monedas> getter
+		assertEquals(calculator.getMonedaOrigen(), calculator.getMonedas().get(0));
+		assertEquals(calculator.getMonedaFinal(), calculator.getMonedas().get(1));
 	}
 
 }

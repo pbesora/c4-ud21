@@ -93,8 +93,13 @@ public class Calculadora {
 	}
 
 
-	public String getMonedas() {
+	public String getMonedasString() {
 		return monedas.toString();
+	}
+	
+	public ArrayList <Moneda> getMonedas() {
+		return monedas;
+		
 	}
 
 	public Moneda getMonedaOrigen() {
