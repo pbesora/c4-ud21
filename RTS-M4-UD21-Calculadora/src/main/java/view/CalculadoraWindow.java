@@ -31,28 +31,13 @@ public class CalculadoraWindow {
 	JLabel lblCambio;
 	
 	private Moneda[] curr = {new Moneda(1.0, "Dollar", "US", "USD", '$'), new Moneda(0.9777, "Euro", "Europe", "EUR", '€')};
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CalculadoraWindow window = new CalculadoraWindow();
-					window.frmCalculadora.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
 	public CalculadoraWindow() {
 		initialize();
-		
+		frmCalculadora.setVisible(true);
 		calculadora = new Calculadora(0.0, 0, 1);
 	}
 

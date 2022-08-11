@@ -18,11 +18,7 @@ public class Calculadora {
 	private Double ratio;
 	
 	private ArrayList <Moneda> monedas = new ArrayList<>();
-	//private Hashtable <String, Moneda> monedas;
-	
-	
-	
-	
+
 	public Calculadora(Double valorOrigen, int monedaOrigen, int monedaFinal) {
 		llenarMonedas();
 		this.valorOrigen = valorOrigen;
@@ -97,8 +93,13 @@ public class Calculadora {
 	}
 
 
-	public ArrayList<Moneda> getMonedas() {
+	public String getMonedasString() {
+		return monedas.toString();
+	}
+	
+	public ArrayList <Moneda> getMonedas() {
 		return monedas;
+		
 	}
 
 	public Moneda getMonedaOrigen() {
