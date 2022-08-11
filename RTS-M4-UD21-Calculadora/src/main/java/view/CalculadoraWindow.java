@@ -108,6 +108,7 @@ public class CalculadoraWindow {
 		btnNum7.setBackground(Color.BLACK);
 		btnNum7.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum7.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum7);
 		panelNumeros.add(btnNum7);
 		
 		JButton btnNum8 = new JButton("8");
@@ -115,6 +116,7 @@ public class CalculadoraWindow {
 		btnNum8.setBackground(Color.BLACK);
 		btnNum8.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum8.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum8);
 		panelNumeros.add(btnNum8);
 		
 		JButton btnNum9 = new JButton("9");
@@ -122,6 +124,7 @@ public class CalculadoraWindow {
 		btnNum9.setBackground(Color.BLACK);
 		btnNum9.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum9.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum9);
 		panelNumeros.add(btnNum9);
 		
 		JButton btnNum4 = new JButton("4");
@@ -129,6 +132,7 @@ public class CalculadoraWindow {
 		btnNum4.setBackground(Color.BLACK);
 		btnNum4.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum4.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum4);
 		panelNumeros.add(btnNum4);
 		
 		JButton btnNum5 = new JButton("5");
@@ -136,6 +140,7 @@ public class CalculadoraWindow {
 		btnNum5.setBackground(Color.BLACK);
 		btnNum5.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum5.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum5);
 		panelNumeros.add(btnNum5);
 		
 		JButton btnNum6 = new JButton("6");
@@ -143,6 +148,7 @@ public class CalculadoraWindow {
 		btnNum6.setBackground(Color.BLACK);
 		btnNum6.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum6.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum6);
 		panelNumeros.add(btnNum6);
 		
 		JButton btnNum1 = new JButton("1");
@@ -158,6 +164,7 @@ public class CalculadoraWindow {
 		btnNum2.setBackground(Color.BLACK);
 		btnNum2.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum2.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum2);
 		panelNumeros.add(btnNum2);
 		
 		JButton btnNum3 = new JButton("3");
@@ -165,6 +172,7 @@ public class CalculadoraWindow {
 		btnNum3.setBackground(Color.BLACK);
 		btnNum3.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum3.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum3);
 		panelNumeros.add(btnNum3);
 		
 		
