@@ -1,9 +1,6 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 import logic.Calculadora;
@@ -67,10 +64,15 @@ class CalculadoraTest {
 	}
 	
 	@Test
-	public void testAuxCalculadora() {
+	public void testactualizarValorOrigen() {
 		assertEquals(calculator.calcularRatio(), 0.9777);
 		assertEquals(calculator.calcularMonedaFinal(), 0.0);
 		assertEquals(calculator.voTieneDecimales(), false);
+		assertEquals(!calculator.voTieneDecimales(), true);
 		assertEquals(calculator.ratioToString(), "1 USD = 0.98 EUR");
 	}
+
+	// He intentado hacer los test de actualizarValorOrigen ni de voTieneDecimales (el true)
+	// El window builder ha sido imposible, he preguntado tambien a otro team y tampoco han sabido como hacerlo
+	
 }
