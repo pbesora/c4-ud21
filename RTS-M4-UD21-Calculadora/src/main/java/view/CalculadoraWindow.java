@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -12,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -30,6 +29,7 @@ public class CalculadoraWindow {
 	private JLabel lblDineroFin;
 	JLabel lblCambio;
 	
+	private ArrayList<Moneda> monedas = new ArrayList<Moneda>();
 	private Moneda[] curr = {new Moneda(1.0, "Dollar", "US", "USD", '$'), new Moneda(0.9777, "Euro", "Europe", "EUR", '€')};
 	
 	/**
@@ -73,6 +73,7 @@ public class CalculadoraWindow {
 		btnCE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculadora.setValorOrigen(0.0);
+				calculadora.setDecimales(0);
 				
 				lblDineroOrigen.setText(String.format("%.0f", calculadora.getValorOrigen()) + " $");
 				
@@ -87,6 +88,29 @@ public class CalculadoraWindow {
 		btnDelete.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
 		btnDelete.setBorder(BorderFactory.createLineBorder(NEGRO,1));
 		panelNumeros.add(btnDelete);
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(calculadora.getDecimales() > 2) {
+					calculadora.setValorOrigen((int)(calculadora.getValorOrigen() * 10) / 10d);
+					calculadora.setDecimales(2);
+					lblDineroOrigen.setText(String.format("%.2f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+				}else if(calculadora.getDecimales() == 2) {
+					calculadora.setValorOrigen((double)(calculadora.getValorOrigen().intValue()));
+					calculadora.setDecimales(1);
+					lblDineroOrigen.setText(String.format("%.2f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+				}else if(calculadora.getDecimales() == 1){
+					calculadora.setValorOrigen((double)(calculadora.getValorOrigen().intValue()));
+					calculadora.setDecimales(0);
+					lblDineroOrigen.setText(String.format("%.0f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+				}else {
+					calculadora.setValorOrigen((double)(calculadora.getValorOrigen().intValue() / 10));
+					lblDineroOrigen.setText(String.format("%.0f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+				}
+				
+			
+				actualizarVista();
+			}
+		});
 		
 		JButton btnNum7 = new JButton("7");
 		btnNum7.setForeground(Color.WHITE);
@@ -170,7 +194,10 @@ public class CalculadoraWindow {
 		btnNum0.setBackground(Color.BLACK);
 		btnNum0.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnNum0.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+		clickBotonNumerico(btnNum0);
 		panelNumeros.add(btnNum0);
+		
+		
 		
 		JButton btnComa = new JButton(",");
 		btnComa.setForeground(Color.WHITE);
@@ -178,6 +205,14 @@ public class CalculadoraWindow {
 		btnComa.setFont(new Font("Segoe UI Semibold", Font.BOLD, 30));
 		btnComa.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 		panelNumeros.add(btnComa);
+		btnComa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(calculadora.getDecimales() == 0) {
+					lblDineroOrigen.setText(calculadora.getValorOrigen().intValue() + ",00 " + calculadora.getMonedaOrigen().getSimbolo());
+					calculadora.setDecimales(1);
+				}
+			}
+		});
 		
 		JPanel panelMonedaOrigen = new JPanel();
 		panelMonedaOrigen.setBackground(GRIS);
@@ -238,18 +273,20 @@ public class CalculadoraWindow {
 		
 		
 	}
-	
+
 	private void clickBotonNumerico(final JButton btn) {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculadora.actualizarValorOrigen(Integer.parseInt(btn.getText()));
-				
-				if(calculadora.voTieneDecimales())
-					lblDineroOrigen.setText(String.format("%.2f", calculadora.getValorOrigen()) + calculadora.getMonedaOrigen().getSimbolo());
-				else
-					lblDineroOrigen.setText(String.format("%.0f", calculadora.getValorOrigen()) + calculadora.getMonedaOrigen().getSimbolo());
-				
-				actualizarVista();
+				int num = Integer.parseInt(btn.getText());
+				calculadora.actualizarValorOrigen(num);
+				if(!(calculadora.getValorOrigen()==0 && num==0)) {
+					if(calculadora.voTieneDecimales())
+						lblDineroOrigen.setText(String.format("%.2f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+					else
+						lblDineroOrigen.setText(String.format("%.0f", calculadora.getValorOrigen()) + " " + calculadora.getMonedaOrigen().getSimbolo());
+
+					actualizarVista();
+				}
 			}
 		});
 	}

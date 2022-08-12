@@ -1,7 +1,6 @@
 package logic;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import model.Moneda;
 
@@ -19,6 +18,8 @@ public class Calculadora {
 	
 	private ArrayList <Moneda> monedas = new ArrayList<>();
 
+	private int decimales = 0;
+	
 	public Calculadora(Double valorOrigen, int monedaOrigen, int monedaFinal) {
 		llenarMonedas();
 		this.valorOrigen = valorOrigen;
@@ -52,12 +53,14 @@ public class Calculadora {
 	}
 	
 	public void actualizarValorOrigen(int tecla) {
-		if(valorOrigen % 1 == 0) {
+		if(decimales == 0) {
 			valorOrigen = valorOrigen * 10 + tecla;
-		}else if(valorOrigen % 0.1 == 0){
+		}else if(decimales == 1){
 				valorOrigen = valorOrigen + tecla*0.1;
-		}else if(valorOrigen % 0.01 == 0) {
+				decimales++;
+		}else if(decimales == 2) {
 			valorOrigen = valorOrigen + tecla*0.01;
+			decimales++;
 		}else {
 			//NO ACTUALIZA
 		}
@@ -112,6 +115,13 @@ public class Calculadora {
 	}
 
 
+	public int getDecimales() {
+		return decimales;
+	}
+
+
+
+
 	/*
 	 * SETTERS
 	 */
@@ -132,7 +142,10 @@ public class Calculadora {
 		actualizarCalculadora();
 	}
 	
-	
+
+	public void setDecimales(int decimales) {
+		this.decimales = decimales;
+	}
 	
 	
 }
