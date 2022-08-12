@@ -64,5 +64,13 @@ class CalculadoraTest {
 		assertEquals(calculator.getMonedaFinal().getAbrev(), "G");
 		assertEquals(calculator.getMonedaFinal().getSimbolo(), 'H');
 		assertEquals(calculator.getMonedaFinal().toString(), ("F - E"));		
-	}	
+	}
+	
+	@Test
+	public void testAuxCalculadora() {
+		assertEquals(calculator.calcularRatio(), 0.9777);
+		assertEquals(calculator.calcularMonedaFinal(), 0.0);
+		assertEquals(calculator.voTieneDecimales(), false);
+		assertEquals(calculator.ratioToString(), "1 USD = 0.98 EUR");
+	}
 }
